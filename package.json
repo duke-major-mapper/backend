@@ -1,0 +1,29 @@
+{
+  "name": "backend",
+  "version": "1.0.0",
+  "description": "Backend for the major planner",
+  "main": "index.js",
+  "scripts": {
+    "start": "DEBUG=\"flow-api:*\" node build/index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": "git+https://github.com/duke-major-planner/backend.git",
+  "author": "Anesu Mafuvadze <mafuvadzeanesu@gmail.com>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/duke-major-planner/backend/issues"
+  },
+  "homepage": "https://github.com/duke-major-planner/backend#readme",
+  "dependencies": {
+    "babel-plugin-transform-flow-strip-types": "6.21.0",
+    "babel-polyfill": "6.20.0",
+    "babel-preset-latest": "6.16.0",
+    "express": "4.14.0",
+    "gulp": "3.9.1",
+    "gulp-babel": "6.1.2",
+    "gulp-sourcemaps": "1.9.1"
+  },
+  "devDependencies": {
+    "gulp-flowtype": "1.0.0"
+  }
+}

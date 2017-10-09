@@ -1,5 +1,4 @@
 // @flow
 
-import {connection} from './shared/Database';
-
+import {db} from './shared/Database';
 

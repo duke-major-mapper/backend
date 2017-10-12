@@ -1,0 +1,4 @@
+runtime: nodejs
+env: flex
+beta_settings:
+  cloud_sql_instances: duke-major-planner:us-east1:dmp-mysql-instance

@@ -6,6 +6,5 @@ export var config = {
   "MYSQL_USER": "root",
   "MYSQL_PASSWORD": "password",
   "INSTANCE_CONNECTION_NAME": "duke-major-planner:us-east1:dmp-mysql-instance",
-  "NODE_ENV": "production",
   "DATABASE": "dmp-mysql-instance"
 };

@@ -7,11 +7,7 @@ const options = {
   user: config['MYSQL_USER'],
   password: config['MYSQL_PASSWORD'],
   database: config['DATABASE'],
-  socketPath: ''
+  socketPath: `/cloudsql/${config['INSTANCE_CONNECTION_NAME']}`
 };
-
-if (config['INSTANCE_CONNECTION_NAME'] && config['NODE_ENV'] === 'production') {
-  options.socketPath = `/cloudsql/${config['INSTANCE_CONNECTION_NAME']}`;
-}
 
 export var connection = mysql.createConnection(options);

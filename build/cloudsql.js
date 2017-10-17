@@ -17,12 +17,8 @@ var options = {
   user: _config.config['MYSQL_USER'],
   password: _config.config['MYSQL_PASSWORD'],
   database: _config.config['DATABASE'],
-  socketPath: ''
+  socketPath: '/cloudsql/' + _config.config['INSTANCE_CONNECTION_NAME']
 };
-
-if (_config.config['INSTANCE_CONNECTION_NAME'] && _config.config['NODE_ENV'] === 'production') {
-  options.socketPath = '/cloudsql/' + _config.config['INSTANCE_CONNECTION_NAME'];
-}
 
 var connection = exports.connection = _mysql2.default.createConnection(options);
 //# sourceMappingURL=cloudsql.js.map

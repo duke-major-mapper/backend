@@ -10,4 +10,4 @@ const options = {
   socketPath: `/cloudsql/${config['INSTANCE_CONNECTION_NAME']}`
 };
 
-export var connection = mysql.createConnection(options);
+export const connection = mysql.createConnection(options);

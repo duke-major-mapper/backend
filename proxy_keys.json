@@ -1,0 +1,12 @@
+{
+  "type": "service_account",
+  "project_id": "duke-major-planner",
+  "private_key_id": "d50ab9cf445703700e0339dd0ac188a7cd0ad643",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQC13NyMl2z51ZCH\n1Sq+so0nsWr6xdJmIdnwtkbukOSaPbTjOaP93W+wVtX3BbGqYUJ1Nc1ySWSoDBox\nYDRyg/cuKuT82rxg9URGX5pjNZJPUDZi0aW1NgmoTxtfXCVgzYTqncHuTLewLPwo\nB6qPEUZ3aOm8ImU7Mqzxg24TlbE/PdDGPexwRnrTuGPHD8asEhad8sTnT1fT4+gL\ne3NIh07azgDkVmX0D7DfgqTT8TXcICCf//OMtojUC++JP7SFd9OmPc0zJw6dTvgn\nX650Ydql+oHa4sYD3hIOHcs3TAnPZpRKlgCAG4dlksez46iv1YQkih0se9tQHsoX\nPVAOwpDhAgMBAAECggEAC1J7ZCDayuCQCZbcvQfYeCHIbWGiwFNH8l+kwZ5BbzVb\nhUB9zFSsiwvS8Ri4h4kb1jiB6IU3eCtdt5h712vOGCCZRkE3dGlcpW13CwlnKRsv\nMZ6H/KTHO+Rl6b1Owey1o1YsQFHkJzqbvcHBbXwHuTAtyhXRm9qDMBuMvzkk8nED\nwMFZaled0t85oYgOmU1ACGh6LJ0oOoJKBPrOMbWDPV7lvjcMZPBd3UQVFJfL1yTy\n5ATy0eLgGGlpiswXaG4jJe99riMcJe8G1uCBeM+leWeLLs/ngfWik9t1tvZQXEoJ\nJ+51xM1f8TpuNX8cU82/hCvffuB/+FeYBoDUFsGJ2QKBgQDiBOdYVraUJq1LhhRb\nXNXU5CH5JO9073FTce8xaqtr/MPYiCPHXK9mOwBUtEhy+ophvzuZOxHLhjA+Y0AS\nAIaFyxRFP8nKcfYPlA1htJz0ei9HXOg8BVSfJggtKyAYxj3lRJWLzgDqCH0sGcJC\n9jV7wndqsptl/wSW7tluvO7j+QKBgQDN/IGmGlwutLHntrc5kCMRYVDTeJFafnUa\npj+pFgpRwe4SrOIC3RFDYS5dSeqpVS/RL3D8LOEjhq/0fXZG876ENe1cZhp3U2fb\nCW32nTy+g6IYSFftiXsGACbmCtosvsCEjGHuNHepxb99KRghWScbSBy1vR0+EtFh\nBlhwfof+KQKBgDBIO+NzIq2jVYG8sryRqFxCH7/JVB32yI662A4Ga3g2FuA6tOnx\nssZz9C4kFRX6z3TyFRk2tSZ1E/k/2n/9/L64Eyx34/OLRLUvO2yT2LOhJlhoUHQB\n74HP7g84FzMzpiVD8W5cI3XbOmIhXo5Paj113Wy9mtS/FYvomio90gqBAoGBAKIz\nUYwQecI1e1mw4Tqsq1CGRvUenaaaqW/gtYRZ3KpggS2ngRksJund3nqLOAM7Fzor\nl1abqHUnG+rz2G0qhjzpkg0OQYzw2nj6ReLKEgka8ksYvFRJy9v/xqGirgZJ9qLp\nQDwoiInhM1ZFQ8EOyOKMuD7LufklLEawjneWy1NxAoGACmum7HQKET6RRYRAP2Tw\n+ESXP/fvQb5WLOz7tY2bS0LAOl49cJVIBy6Uf/TQWQlzojZrlvlNwCRbHzc26D8i\nPSRYEcgytJSmuz0jOIbnlaGGX2Wyi61Ay7NuyfaptdN5urjrTJyhC6RT5iKgmIjn\nZ5kHT5g59Xx4KN2upQyFAqk=\n-----END PRIVATE KEY-----\n",
+  "client_email": "test-sql@duke-major-planner.iam.gserviceaccount.com",
+  "client_id": "116242373462602918400",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://accounts.google.com/o/oauth2/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/test-sql%40duke-major-planner.iam.gserviceaccount.com"
+}

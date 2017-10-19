@@ -6,8 +6,7 @@ const config = require('./../config.json');
 
 const options = {
   user: config['MYSQL_USER'],
-  password: config['MYSQL_PASSWORD'],
-  database: 'bookshelf'
+  password: config['MYSQL_PASSWORD']
 };
 
 if (config['INSTANCE_CONNECTION_NAME'] && config['NODE_ENV'] === 'production') {
@@ -95,11 +94,7 @@ if (module === require.main) {
   console.log(
     `Running this script directly will allow you to initialize your mysql database.
     This script will not modify any existing tables.`);
-    var configs = {
-      user: options.user,
-      password: options.password,
-    }
-    createSchema(configs);
+    createSchema(options);
 }
 
 function createSchema (config) {

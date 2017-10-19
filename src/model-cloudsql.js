@@ -95,37 +95,33 @@ if (module === require.main) {
   console.log(
     `Running this script directly will allow you to initialize your mysql database.
     This script will not modify any existing tables.`);
-    console.log(options);
-
-  prompt[['user', 'password'], (err, result) => {
-    if (err) {
-      return;
+    var configs = {
+      user: options.user,
+      password: options.password,
     }
-    createSchema(result);
-  }];
+    createSchema(configs);
 }
 
 function createSchema (config) {
-  console.log(`test`);
+  console.log(`test123`);
   const connection = mysql.createConnection(extend({
     multipleStatements: true
   }, config));
 
   connection.query(
-    `CREATE DATABASE IF NOT EXISTS \`bookshelf\`
+    `CREATE DATABASE IF NOT EXISTS \`dmp_dev\`
       DEFAULT CHARACTER SET = 'utf8'
       DEFAULT COLLATE 'utf8_general_ci';
-    USE \`bookshelf\`;
-    CREATE TABLE IF NOT EXISTS \`bookshelf\`.\`books\` (
+    USE \`dmp_dev\`;
+    CREATE TABLE IF NOT EXISTS \`dmp_dev\`.\`test_table\` (
       \`id\` INT UNSIGNED NOT NULL AUTO_INCREMENT,
-      \`title\` VARCHAR(255) NULL,
-      \`author\` VARCHAR(255) NULL,
-      \`publishedDate\` VARCHAR(255) NULL,
-      \`imageUrl\` VARCHAR(255) NULL,
-      \`description\` TEXT NULL,
+      \`name\` VARCHAR(255) NULL,
+      \`data\` INT NOT NULL,
       \`createdBy\` VARCHAR(255) NULL,
       \`createdById\` VARCHAR(255) NULL,
-    PRIMARY KEY (\`id\`));`,
+    PRIMARY KEY (\`id\`));
+    INSERT INTO test_table (name, data)
+    VALUES ('Aman', 100);`,
     (err) => {
       if (err) {
         throw err;

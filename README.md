@@ -2,10 +2,8 @@ Backend for the major planner
 
 Instructions:
 
-1. `./cloud_sql_proxy -instances="duke-major-planner:us-east1:dmp-mysql-instance"=tcp:3306 -credential_file="proxy_keys.json" &`
+Run `gcloud beta sql connect dmp-mysql-instance --user=root` to connect to sql server.
+  - You must have the Google Cloud SDK set up. To do this, check the gcloud docs (they are very extensive).
 
-  - Better to use: `gcloud beta sql connect dmp-mysql-instance --user=root`
-
-2. `gulp`
-
-3. `npm start`
+Run `yarn run init-cloudsql`
+ - Make sure you have `yarn` isntalled properlly for this to work. Do not use `npm` because when we deploy they're `.lock` files will conflict.

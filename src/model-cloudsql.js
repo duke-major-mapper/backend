@@ -98,7 +98,6 @@ if (module === require.main) {
 }
 
 function createSchema (config) {
-  console.log(`test123`);
   const connection = mysql.createConnection(extend({
     multipleStatements: true
   }, config));

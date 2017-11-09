@@ -41,8 +41,9 @@ app.get('/classes', function (req, res) {
     }
     
     var data = connection.query(
-        `SELECT * FROM Fulfills WHERE major_id =` + major_id + `;`, 
-        //GOTTA FIX THIS TO RETURN CLASS_NAME AS WELL
+        `SELECT * FROM Class JOIN (
+            Fulfills WHERE major_id =` + major_id + `) Fulfills
+            WHERE Class.id = Fulfills.class_id;`, 
         (err) => {
           if (err) {
             throw err;
@@ -63,7 +64,6 @@ app.get('/requirements', function (req, res) {
     
     var data = connection.query(
         `SELECT * FROM Requirements WHERE major_id =` + major_id + `;`, 
-        //GOTTA FIX THIS TO RETURN CLASS_NAME AS WELL
         (err) => {
           if (err) {
             throw err;
@@ -84,10 +84,12 @@ app.get('/overlap', function (req, res) {
     }
     
     var data = connection.query(
-        `SELECT f1.class_id, f1.major_id AS major1, f1.req_id AS req_id1, f2.major_id AS major2, f2.req_id AS req_id2 
-        FROM Fulfills f1 JOIN Fulfills f2 ON (f1.major_id = ` + major_id_1 +
-        ` AND f2.major_id = ` + major_id_2 + ` AND f1.class_id = f2.class_id);`, 
-        //GOTTA FIX THIS TO RETURN CLASS_NAME AS WELL
+        `SELECT * FROM Class JOIN (
+            SELECT f1.class_id, f1.major_id AS major1, f1.req_id AS req_id1, f2.major_id AS major2, f2.req_id AS req_id2 
+            FROM Fulfills f1 JOIN Fulfills f2 ON (f1.major_id = ` + major_id_1 +
+            ` AND f2.major_id = ` + major_id_2 + ` AND f1.class_id = f2.class_id)
+            ) Fulfills 
+            WHERE Class.id = Fulfills.class_id;`, 
         (err) => {
           if (err) {
             throw err;
@@ -99,27 +101,3 @@ app.get('/overlap', function (req, res) {
     // may need to json.parse(data)
     res.status(200).send(data);
 });
-
-connection.query(
-    `CREATE DATABASE IF NOT EXISTS \`dmp_dev\`
-      DEFAULT CHARACTER SET = 'utf8'
-      DEFAULT COLLATE 'utf8_general_ci';
-    USE \`dmp_dev\`;
-    CREATE TABLE IF NOT EXISTS \`dmp_dev\`.\`test_table\` (
-      \`id\` INT UNSIGNED NOT NULL AUTO_INCREMENT,
-      \`name\` VARCHAR(255) NULL,
-      \`data\` INT NOT NULL,
-      \`createdBy\` VARCHAR(255) NULL,
-      \`createdById\` VARCHAR(255) NULL,
-    PRIMARY KEY (\`id\`));
-    INSERT INTO test_table (name, data)
-    VALUES ('Aman', 100);`,
-    (err) => {
-      if (err) {
-        throw err;
-      }
-      console.log('Successfully created schema');
-      connection.end();
-    }
-  );
- 

@@ -15,6 +15,7 @@ const connection = mysql.createConnection(extend({
 }, options));
 
 const requestTemplate = {
+  status: null,
   message: '',
   success: true,
   data: [],
@@ -31,6 +32,7 @@ app.get('/majors', function (req, res) {
     connection.query(
         `SELECT name FROM Major;`, function (error, result) {
           if (error) {
+            requestObject.status = 500;
             requestObject.success = false;
             requestObject.message = error;
             res.status(500).send(requestObject);
@@ -39,6 +41,7 @@ app.get('/majors', function (req, res) {
             for (var i = 0; i < result.length; i++) {
               data.push(result[i].name);
             }
+            requestObject.status = 200;
             requestObject.data = data;
             requestObject.message = 'Major names recieved';
             res.status(200).send(requestObject);
@@ -49,26 +52,32 @@ app.get('/majors', function (req, res) {
     console.log('GET /majors');
 });
 
-app.get('/classes', function (req, res) {
-    const major_id = req.query['major_id'];
-
+app.get('/classes/:id', function (req, res) {
+    const major_id = req.params.id;
     if (!major_id) {
         res.status(400).send("You did not supply the major id");
     }
+    var requestObject = requestTemplate;
+    connection.query(
+        `SELECT * FROM Class JOIN
+        ( SELECT * FROM Fulfills WHERE major_id = ${major_id}) AS Fulfills
+        WHERE Class.id = Fulfills.class_id;`, function (error, result) {
+              if (error) {
+                requestObject.status = 500;
+                requestObject.success = false;
+                requestObject.message = (error.sqlMessage ? error.sqlMessage : error);
+                res.status(500).send(requestObject);
+              } else {
+                requestObject.status = 200;
+                requestObject.data = result;
+                requestObject.message = 'Classes recieved';
+                res.status(200).send(requestObject);
+              }
+            }
 
-    var data = connection.query(
-        `SELECT * FROM Class JOIN (
-            Fulfills WHERE major_id =` + major_id + `) Fulfills
-            WHERE Class.id = Fulfills.class_id;`,
-        (err) => {
-          if (err) {
-            throw err;
-          }
-          console.log('Querying classes for major ' + major_id);
-        }
     );
     // may need to json.parse(data)
-    res.status(200).send(data);
+    console.log('GET /classes/' + major_id);
 });
 
 app.get('/requirements', function (req, res) {

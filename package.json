@@ -6,7 +6,8 @@
   "scripts": {
     "start": "DEBUG=\"flow-api:*\" node build/index.js",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "init-cloudsql": "node src/model-cloudsql.js"
+    "init-cloudsql": "node src/model-cloudsql.js",
+    "api": "node src/Api.js"
   },
   "repository": "git+https://github.com/duke-major-planner/backend.git",
   "author": "Anesu Mafuvadze <mafuvadzeanesu@gmail.com>",

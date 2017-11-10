@@ -11,3 +11,5 @@ Run `yarn run init-cloudsql` to initialize queries written in `src/model-cloudsq
      - If you need to use the proxy and you have already installed it, run this once you have requested for the `proxy_keys.json` file that you will need from Aman (hint: put this file in the root director and run the following in the root directory):
 
      `./cloud_sql_proxy -instances="duke-major-planner:us-east1:dmp-mysql-instance"=tcp:3306 -credential_file="proxy_keys.json" &`
+
+Run the api using `yarn run api` and make sure the cloud_sql_proxy is on

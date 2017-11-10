@@ -30,16 +30,16 @@ connection.query('USE major_data;');
 app.get('/majors', function (req, res) {
   var requestObject = requestTemplate;
     connection.query(
-        `SELECT name FROM Major;`, function (error, result) {
+        `SELECT * FROM Major;`, function (error, result) {
           if (error) {
             requestObject.status = 500;
             requestObject.success = false;
             requestObject.message = error;
             res.status(500).send(requestObject);
           } else {
-            data = [];
+            data = [''];
             for (var i = 0; i < result.length; i++) {
-              data.push(result[i].name);
+              data[result[i].id] = result[i].name
             }
             requestObject.status = 200;
             requestObject.data = data;

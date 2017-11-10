@@ -80,24 +80,29 @@ app.get('/classes/:id', function (req, res) {
     console.log('GET /classes/' + major_id);
 });
 
-app.get('/requirements', function (req, res) {
-    const major_id = req.query['major_id'];
-
-    if (!major_id) {
-        res.status(400).send("You did not supply the major id");
+app.get('/requirements/:id', function (req, res) {
+  const major_id = req.params.id;
+  if (!major_id) {
+      res.status(400).send("You did not supply the major id");
+  }
+  var requestObject = requestTemplate;
+  connection.query(
+    `SELECT * FROM Requirements WHERE major_id =` + major_id + `;`, function (error, result) {
+      if (error) {
+        requestObject.status = 500;
+        requestObject.success = false;
+        requestObject.message = (error.sqlMessage ? error.sqlMessage : error);
+        res.status(500).send(requestObject);
+      } else {
+        requestObject.status = 200;
+        requestObject.data = result;
+        requestObject.message = 'Classes recieved';
+        res.status(200).send(requestObject);
+      }
     }
-
-    var data = connection.query(
-        `SELECT * FROM Requirements WHERE major_id =` + major_id + `;`,
-        (err) => {
-          if (err) {
-            throw err;
-          }
-          console.log('Querying classes for major ' + major_id);
-        }
-    );
-    // may need to json.parse(data)
-    res.status(200).send(data);
+  );
+  // may need to json.parse(data)
+  console.log('GET /requirements/' + major_id);
 });
 
 app.get('/overlap', function (req, res) {

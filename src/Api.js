@@ -71,6 +71,7 @@ app.get('/classes/:id', function (req, res) {
                 requestObject.status = 200;
                 requestObject.data = result;
                 requestObject.message = 'Classes recieved';
+                requestObject.id = major_id;
                 res.status(200).send(requestObject);
               }
             }

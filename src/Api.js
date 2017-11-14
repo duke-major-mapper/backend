@@ -49,13 +49,15 @@ app.get('/majors', function (req, res) {
         }
     );
     // may need to json data
-    console.log('GET /majors');
+    console.log('GET ' + req.originalUrl);
 });
 
 app.get('/classes/:id', function (req, res) {
     const major_id = req.params.id;
     if (!major_id) {
         res.status(400).send("You did not supply the major id");
+        console.log('FAILED: GET ' + req.originalUrl);
+        return;
     }
     var requestObject = requestTemplate;
     connection.query(
@@ -78,13 +80,15 @@ app.get('/classes/:id', function (req, res) {
 
     );
     // may need to json.parse(data)
-    console.log('GET /classes/' + major_id);
+    console.log('GET ' + req.originalUrl);
 });
 
 app.get('/requirements/:id', function (req, res) {
   const major_id = req.params.id;
   if (!major_id) {
       res.status(400).send("You did not supply the major id");
+      console.log('FAILED: GET ' + req.originalUrl);
+      return;
   }
   var requestObject = requestTemplate;
   connection.query(
@@ -103,14 +107,21 @@ app.get('/requirements/:id', function (req, res) {
     }
   );
   // may need to json.parse(data)
-  console.log('GET /requirements/' + major_id);
+  console.log('GET ' + req.originalUrl);
 });
 
 app.get('/overlap', function (req, res) {
-    const ids = req.query['ids'].split(',').map(Number);
-
-    if (!ids || ids.length !== 2) {
-        res.status(400).send("Check ids parameter because ids parameter are incorrect!");
+    let ids = req.query['ids'];
+    if (!ids) {
+        res.status(400).send("Please add a ids parameter");
+        console.log('FAILED: GET ' + req.originalUrl);
+        return;
+    }
+    ids = ids.split(',').map(Number);
+    if (ids.length !== 2) {
+        res.status(400).send("There needs to be ONLY 2 parameters for ids!");
+        console.log('FAILED: GET ' + req.originalUrl);
+        return;
     }
     var requestObject = requestTemplate;
     connection.query(
